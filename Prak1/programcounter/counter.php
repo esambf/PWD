@@ -1,5 +1,5 @@
 <?php
-$filecounter = "counter.txt";
+$filecounter = "counter.txt"; //komentar
 $fileload=fopen($filecounter,"r+");
 $hit = fread($fileload, filesize($filecounter));
 echo("<table width=250 align=center border=1 cellspacing=0 cellpadding=0

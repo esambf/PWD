@@ -1,0 +1,75 @@
+
+Setting environment for using XAMPP for Windows.
+User@TEAMOS-PC c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 109
+Server version: 10.4.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE DATABASE akademik;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| akademik           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [(none)]> use akademik;
+Database changed
+
+MariaDB [akademik]> CREATE TABLE mahasiswa (
+    -> nim varchar(5),
+    -> nama varchar(50),
+    -> jkel varchar(1),
+    -> alamat text,
+    -> tgllhr date,
+    -> PRIMARY KEY (nim)
+    -> );
+Query OK, 0 rows affected (9.666 sec)
+
+MariaDB [akademik]> INSERT INTO mahasiswa VALUES ('MHS01', 'Siti Aminah', 'P', 'SOLO', '1995-10-01');
+Query OK, 1 row affected (0.071 sec)
+
+MariaDB [akademik]> INSERT INTO mahasiswa VALUES ('MHS02', 'Rita', 'P', 'SOLO', '1999-01-01');
+Query OK, 1 row affected (0.100 sec)
+
+MariaDB [akademik]> INSERT INTO mahasiswa VALUES ('MHS03', 'Amirudin', 'L', 'SEMARANG', '1998-08-11');
+Query OK, 1 row affected (0.130 sec)
+
+MariaDB [akademik]> INSERT INTO mahasiswa VALUES ('MHS04', 'Siti Maryam', 'P', 'JAKARTA', '1995-04-15');
+Query OK, 1 row affected (0.043 sec)
+
+MariaDB [akademik]> SELECT * FROM mahasiswa;
++-------+-------------+------+----------+------------+
+| nim   | nama        | jkel | alamat   | tgllhr     |
++-------+-------------+------+----------+------------+
+| MHS01 | Siti Aminah | P    | SOLO     | 1995-10-01 |
+| MHS02 | Rita        | P    | SOLO     | 1999-01-01 |
+| MHS03 | Amirudin    | L    | SEMARANG | 1998-08-11 |
+| MHS04 | Siti Maryam | P    | JAKARTA  | 1995-04-15 |
++-------+-------------+------+----------+------------+
+4 rows in set (0.000 sec)
+
+MariaDB [akademik]> SELECT * FROM mahasiswa WHERE alamat='SOLO';
++-------+-------------+------+--------+------------+
+| nim   | nama        | jkel | alamat | tgllhr     |
++-------+-------------+------+--------+------------+
+| MHS01 | Siti Aminah | P    | SOLO   | 1995-10-01 |
+| MHS02 | Rita        | P    | SOLO   | 1999-01-01 |
++-------+-------------+------+--------+------------+
+2 rows in set (0.001 sec)
+
+MariaDB [akademik]>

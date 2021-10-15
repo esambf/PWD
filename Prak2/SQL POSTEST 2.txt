@@ -1,0 +1,106 @@
+
+Setting environment for using XAMPP for Windows.
+User@TEAMOS-PC c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 95
+Server version: 10.4.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use akademik;
+Database changed
+MariaDB [akademik]>ALTER TABLE mahasiswa ADD prodi VARCHAR(60) AFTER nama;
+Query OK, 0 rows affected (0.151 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [akademik]> DESC mahasiswa;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| nim    | varchar(5)  | NO   | PRI | NULL    |       |
+| nama   | varchar(50) | YES  |     | NULL    |       |
+| prodi  | varchar(60) | YES  |     | NULL    |       |
+| jkel   | varchar(1)  | YES  |     | NULL    |       |
+| alamat | text        | YES  |     | NULL    |       |
+| tgllhr | date        | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+6 rows in set (0.023 sec)
+
+MariaDB [akademik]> UPDATE `mahasiswa` SET `prodi` = 'Teknik Informatika' WHERE `mahasiswa`.`nim` = 'MHS01';
+Query OK, 1 row affected (0.057 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [akademik]> UPDATE `mahasiswa` SET `prodi` = 'Teknik Industri' WHERE `mahasiswa`.`nim` = 'MHS02';
+Query OK, 1 row affected (0.042 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [akademik]> UPDATE `mahasiswa` SET `prodi` = 'Teknik Pangan' WHERE `mahasiswa`.`nim` = 'MHS03';
+Query OK, 1 row affected (0.039 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [akademik]> UPDATE `mahasiswa` SET `prodi` = 'Teknik Kimia' WHERE `mahasiswa`.`nim` = 'MHS04';
+Query OK, 1 row affected (0.107 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [akademik]> SELECT * FROM mahasiswa;
++-------+-------------+--------------------+------+----------+------------+
+| nim   | nama        | prodi              | jkel | alamat   | tgllhr     |
++-------+-------------+--------------------+------+----------+------------+
+| MHS01 | Siti Aminah | Teknik Informatika | P    | SOLO     | 1995-10-01 |
+| MHS02 | Rita        | Teknik Industri    | P    | SOLO     | 1999-01-01 |
+| MHS03 | Amirudin    | Teknik Pangan      | L    | SEMARANG | 1998-08-11 |
+| MHS04 | Siti Maryam | Teknik Kimia       | P    | JAKARTA  | 1995-04-15 |
++-------+-------------+--------------------+------+----------+------------+
+4 rows in set (0.000 sec)
+
+MariaDB [akademik]> SELECT * FROM mahasiswa WHERE prodi='Teknik Informatika';
++-------+-------------+--------------------+------+--------+------------+
+| nim   | nama        | prodi              | jkel | alamat | tgllhr     |
++-------+-------------+--------------------+------+--------+------------+
+| MHS01 | Siti Aminah | Teknik Informatika | P    | SOLO   | 1995-10-01 |
++-------+-------------+--------------------+------+--------+------------+
+1 row in set (0.001 sec)
+
+MariaDB [akademik]> SELECT nama FROM mahasiswa;
++-------------+
+| nama        |
++-------------+
+| Siti Aminah |
+| Rita        |
+| Amirudin    |
+| Siti Maryam |
++-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [akademik]> SELECT nim, nama FROM mahasiswa;
++-------+-------------+
+| nim   | nama        |
++-------+-------------+
+| MHS01 | Siti Aminah |
+| MHS02 | Rita        |
+| MHS03 | Amirudin    |
+| MHS04 | Siti Maryam |
++-------+-------------+
+4 rows in set (0.001 sec)
+
+MariaDB [akademik]> SELECT nim FROM mahasiswa WHERE prodi='Teknik Industri';
++-------+
+| nim   |
++-------+
+| MHS02 |
++-------+
+1 row in set (0.000 sec)
+
+MariaDB [akademik]> SELECT * FROM mahasiswa WHERE alamat LIKE '%SEMAR%';
++-------+----------+---------------+------+----------+------------+
+| nim   | nama     | prodi         | jkel | alamat   | tgllhr     |
++-------+----------+---------------+------+----------+------------+
+| MHS03 | Amirudin | Teknik Pangan | L    | SEMARANG | 1998-08-11 |
++-------+----------+---------------+------+----------+------------+
+1 row in set (0.000 sec)
+
+MariaDB [akademik]>
