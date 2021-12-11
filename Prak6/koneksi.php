@@ -11,3 +11,4 @@ if (!$con) { //cek jika tidak terkoneksi
 }else { //jika koneksi berhasil
     echo ""; //menampilkan keterangan koneksi berhasil
 }
+?>
